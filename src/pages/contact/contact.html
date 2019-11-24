@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      News
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher
+    (ionRefresh)="onRefresh($event)"
+    [enabled]="cache && !refreshSubscription"
+  >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="placeholder$ | async as placeholder; else loading">
+    <p *ngIf="refreshSubscription">
+      Getting latest newsfeed now...
+      <ion-spinner name="crescent"></ion-spinner>
+    </p>
+
+    <ion-list>
+      <ion-item
+        text-wrap
+        *ngFor="let item of placeholder.articles"
+        (click)="showNewsDetail(item)"
+      >
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3>
+              <div>
+                <ion-thumbnail slot="start">
+                  <img [src]="item.urlToImage" />
+                </ion-thumbnail>
+              </div>
+            </ion-col>
+            <ion-col col-9>
+              <div>
+                <span> {{ item.title }}</span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+
+    <!--    <ion-item
+      *ngFor=" let item of placeholder.articles"
+      (click)="showNewsDetail()"
+    >
+      <ion-thumbnail slot="start">
+        <img [src]="item.urlToImage" />
+      </ion-thumbnail>
+      <ion-label position="undefined"> {{ item.title }}</ion-label>
+    </ion-item> -->
+  </div>
+</ion-content>
+
+<ng-template #loading>
+  <p>
+    Loading placeholder data...
+    <ion-spinner name="crescent"></ion-spinner>
+  </p>
+</ng-template>

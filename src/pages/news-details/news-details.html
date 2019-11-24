@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="">
+    <ion-title>
+      <button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon></button
+      >&nbsp;News In Detail</ion-title
+    >
+    <!--  <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-card>
+
+      <img [src]="urlToImage"/>
+    <ion-card-header>
+      <ion-card-title text-wrap>{{newsTitle}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+
+      {{newsText}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer text-wrap>
+  <ion-toolbar>
+    <ion-item>Reported at : {{publishedAtDt}}</ion-item>
+  </ion-toolbar>
+</ion-footer>

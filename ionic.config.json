@@ -1,0 +1,7 @@
+{
+  "name": "offline-observable-example",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
